@@ -14,6 +14,10 @@ $arrayDeEnteros = array(rand(1, 100),rand(1, 100),rand(1, 100),rand(1, 100),rand
 
 var_dump($arrayDeEnteros);
 
+if()
+{
+    
+}
 
 
 
