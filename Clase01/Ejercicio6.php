@@ -10,16 +10,23 @@ Macarena Ferrero
 */
 
 
-$arrayDeEnteros = array(rand(1, 100),rand(1, 100),rand(1, 100),rand(1, 100),rand(1, 100));
+$arrayDeEnteros = array(rand(1, 10),rand(1, 10),rand(1, 10),rand(1, 10),rand(1, 10));
 
 var_dump($arrayDeEnteros);
+$total = array_sum($arrayDeEnteros);
 
-if()
+if($total > 6)
 {
-    
+    printf("La suma del array es mayor a 6, suman " .$total);
 }
-
-
+else if($total < 6)
+{
+    printf("La suma del array es menor a 6, suman " .$total);
+}
+else
+{
+    printf("La suma del array es igual a 6");
+}
 
 
 ?>
