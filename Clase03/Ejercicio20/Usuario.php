@@ -35,7 +35,7 @@ class Usuario
 
     public function GuardarCSV()
     {
-        $archivo = fopen("Usuarios.csv", "w");
+        $archivo = fopen("Usuarios.csv", "a+");
         $usuarioArray = array($this->nombre, $this->clave, $this->mail);  
     
         $guardarCSV = implode(',', $usuarioArray);
