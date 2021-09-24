@@ -1,0 +1,82 @@
+/*
+3.- Realizar las siguientes consultas.
+
+1. Obtener los detalles completos de todos los usuarios, ordenados alfabéticamente.
+2. Obtener los detalles completos de todos los productos líquidos.
+3. Obtener todas las compras en los cuales la cantidad esté entre 6 y 10 inclusive.
+4. Obtener la cantidad total de todos los productos vendidos.
+5. Mostrar los primeros 3 números de productos que se han enviado.
+6. Mostrar los nombres del usuario y los nombres de los productos de cada venta.
+7. Indicar el monto (cantidad * precio) por cada una de las ventas.
+8. Obtener la cantidad total del producto 1003 vendido por el usuario 104.
+9. Obtener todos los números de los productos vendidos por algún usuario de ‘Avellaneda’.
+10.Obtener los datos completos de los usuarios cuyos nombres contengan la letra ‘u’.
+11. Traer las ventas entre junio del 2020 y febrero 2021.
+12. Obtener los usuarios registrados antes del 2021.
+13.Agregar el producto llamado ‘Chocolate’, de tipo Sólido y con un precio de 25,35.
+14.Insertar un nuevo usuario .
+15.Cambiar los precios de los productos de tipo sólido a 66,60.
+16.Cambiar el stock a 0 de todos los productos cuyas cantidades de stock sean menores
+a 20 inclusive.
+17.Eliminar el producto número 1010.
+18.Eliminar a todos los usuarios que no han vendido productos.
+
+Macarena Ferrero
+*/
+
+
+
+//Obtener los detalles completos de todos los usuarios, ordenados alfabéticamente.
+SELECT * FROM `usuario` ORDER BY nombre ASC;
+
+//Obtener los detalles completos de todos los productos líquidos.
+SELECT * FROM `producto` WHERE tipo="liquido";
+
+//Obtener todas las compras en los cuales la cantidad esté entre 6 y 10 inclusive.
+SELECT * FROM `venta` WHERE cantidad >= 6 && cantidad<=10;
+
+//Obtener la cantidad total de todos los productos vendidos.
+SELECT SUM(cantidad) FROM venta;
+
+//Mostrar los primeros 3 números de productos que se han enviado.
+SELECT * FROM `producto` ORDER BY fecha_de_creacion ASC LIMIT 3;
+
+//Mostrar los nombres del usuario y los nombres de los productos de cada venta.
+SELECT usuario.nombre, producto.nombre FROM `usuario` INNER JOIN `venta` ON usuario.id = venta.id_usuario INNER JOIN `producto` ON producto.id = venta.id_producto;
+
+//Indicar el monto (cantidad * precio) por cada una de las ventas.
+SELECT producto.precio*venta.cantidad FROM `venta` INNER JOIN producto WHERE venta.id_producto = producto.id;
+
+//Obtener la cantidad total del producto 1003 vendido por el usuario 104.
+SELECT SUM(cantidad) FROM `venta` WHERE venta.id_producto=1003 && venta.id_usuario=104;
+
+//Obtener todos los números de los productos vendidos por algún usuario de ‘Avellaneda’.
+SELECT venta.id_producto FROM `venta`INNER JOIN usuario WHERE venta.id_usuario = usuario.id && usuario.localidad = "Avellaneda";
+
+//Obtener los datos completos de los usuarios cuyos nombres contengan la letra ‘u’.
+SELECT * FROM `usuario` WHERE usuario.nombre LIKE '%u%';
+
+//Traer las ventas entre junio del 2020 y febrero 2021.
+SELECT * FROM `venta` WHERE fecha_de_venta BETWEEN '2020-6-1' AND '2021-2-29' ORDER BY fecha_de_venta ASC;
+
+//Obtener los usuarios registrados antes del 2021.
+SELECT * FROM `usuario` WHERE usuario.fecha_de_registro < '2021-01-01';
+
+//Agregar el producto llamado ‘Chocolate’, de tipo Sólido y con un precio de 25,35.
+INSERT INTO `producto`(`nombre`, `tipo`,`precio`) VALUES ('Chocolate','Solido',25.35);
+
+//Insertar un nuevo usuario .
+INSERT INTO `usuario`(`nombre`, `apellido`, `clave`, `mail`, `fecha_de_registro`, `localidad`) VALUES ('Agustin','Pose','8374','pose@agus','2021-09-24','Lanus');
+
+//Cambiar los precios de los productos de tipo sólido a 66,60.
+UPDATE `producto` SET `precio`= 60.66 WHERE `tipo`='solido';
+
+//Cambiar el stock a 0 de todos los productos cuyas cantidades de stock sean menores
+a 20 inclusive.
+UPDATE `producto` SET `stock`=0 WHERE stock <= 20;
+
+//Eliminar el producto número 1010.
+DELETE FROM `producto` WHERE id=1010;
+
+//Eliminar a todos los usuarios que no han vendido productos.
+DELETE FROM `usuario` WHERE usuario.id NOT IN (SELECT venta.id_usuario FROM `venta`);
