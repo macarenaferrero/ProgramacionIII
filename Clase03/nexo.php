@@ -15,7 +15,7 @@ switch ($opcion) {
         $usuarionuevo = new Usuario($nombre,$password);
         var_dump($usuarionuevo);
     case 'Guardar':
-        GuardarCSV;
+        $usuarionuevo->GuardarCSV();
     default:        
         break;
 }

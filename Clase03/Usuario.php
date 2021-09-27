@@ -16,10 +16,10 @@ class Usuario
         $this->$password = $password;
     }
 
-    function GuardarCSV()
+    public function GuardarCSV()
     {
         $archivo = fopen("Saludar.txt", "w");
-        $usuarioArray = array($this->$nombre, $this->$password);  
+        $usuarioArray = array($this->nombre, $this->password);  
     
         $guardarCSV = implode(',', $usuarioArray);
         $guardarCSV = $guardarCSV . "\n";
