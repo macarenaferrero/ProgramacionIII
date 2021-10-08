@@ -3,29 +3,21 @@
 class Usuario
 {
     private $nombre;
+    private $apellido;
     private $clave;
     private $mail;
-    private $id;
+    private $localidad;
     private $fecha_de_registro;
-    private $rutaArchivo;
+    //private $rutaArchivo;
 
-    public function __construct($nombre, $clave, $mail, $id = 0, $fecha_de_registro = 'empty', $rutaArchivo = 'empty')
+    public function __construct($nombre, $apellido, $clave, $mail, $localidad, $fecha_de_registro = 'empty')
 
     {
         $this->nombre = $nombre;
         $this->clave = $clave;
         $this->mail = $mail;
-        $this->rutaArchivo = $rutaArchivo;
-        //Operador ternario
-        //(condicion) ? (valor si da true) : (valor si da false)
-        //$this->id != 0 ? $this->id = $id : $this->id = rand(1,10000);
-
-        if ($this->id != 0) {
-            $this->id = $id;
-        } else {
-            $this->id = rand(1, 10000);
-        }
-
+        $this->apellido = $apellido;
+        $this->localidad = $localidad;
         if ($fecha_de_registro == 'empty') {
             $fecha_de_registro = new DateTime("now");
             $this->fecha_de_registro = $fecha_de_registro->format('d-m-Y');
@@ -36,10 +28,11 @@ class Usuario
 
     public function MostrarUsuario()
     {
-        echo "Id:" . $this->id . "<br/>";
         echo "Nombre : " . $this->nombre . "<br/>";
+        echo "Apellido : " . $this->apellido . "<br/>";
         echo "Mail :" . $this->mail . "<br/>";
         echo "Clave:" . $this->clave . "<br/>";
+        echo "Localidad:" . $this->localidad . "<br/>";
         echo "Fecha de registro:" . $this->fecha_de_registro . "<br/>";
     }
 
@@ -48,7 +41,7 @@ class Usuario
         $retorno = false;
         $archivo = fopen("Usuarios.csv", "a+");
         if ($archivo != false) {
-            $usuarioArray = array($this->id, $this->nombre, $this->clave, $this->mail, $this->fecha_de_registro);
+            $usuarioArray = array($this->nombre, $this->apellido, $this->clave, $this->mail, $this->localidad, $this->fecha_de_registro);
 
             $guardarCSV = implode(',', $usuarioArray);
             //$rows = str_getcsv($str, PHP_EOL);
@@ -68,7 +61,7 @@ class Usuario
         $usuariosCargados = array();
 
         while ($datos = fgetcsv($archivo)) {
-            $user = new Usuario($datos[0], $datos[1], $datos[2]);
+            $user = new Usuario($datos[0], $datos[1], $datos[2], $datos[3], $datos[4]);
             array_push($usuariosCargados, $user);
         }
 
@@ -117,8 +110,8 @@ class Usuario
             $json = json_encode($this);
             fwrite($file, $json);
             $success = true;
+            fclose($file);
         }
-        fclose($file);
         return $success;
     }
 
@@ -133,6 +126,31 @@ class Usuario
             $success = true;
         }
         fclose($file);
-        return Usuario::ListUsers($users);
+        return $success;
+    }
+
+    public static function GuardarenBD()
+    {
+        $accesoBD = AccesoDatos::dameUnObjetoAcceso();
+        $query = "INSERT INTO usuarios (nombre, apellido, clave, mail, localidad, fechaCreacion) VALUES (:nombre, :apellido, :clave, :mail, :localidad,:fechaCreacion)";
+        $consulta = $accesoBD->RetornarConsulta($query);
+        $consulta->bindValue(':nombre');
+        if ($consulta != null)
+            $consulta->Execute();
+
+        return $consulta->fetchAll(PDO::FETCH_CLASS, "Usuario");
     }
 }
+
+/*
+ public function InsertarElCdParametros()
+	 {
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr)values(:titulo,:cantante,:anio)");
+				$consulta->bindValue(':titulo',$this->titulo, PDO::PARAM_INT);
+				$consulta->bindValue(':anio', $this->año, PDO::PARAM_STR);
+				$consulta->bindValue(':cantante', $this->cantante, PDO::PARAM_STR);
+				$consulta->execute();		
+				return $objetoAccesoDato->RetornarUltimoIdInsertado();
+	 }
+*/

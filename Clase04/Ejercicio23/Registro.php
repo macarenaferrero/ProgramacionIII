@@ -19,7 +19,14 @@ require_once "Usuario.php";
 $nombre = $_POST['nombre'];
 $clave = $_POST['clave'];
 $mail = $_POST['mail'];
+$opcion = $GET['opcion'];
 
+switch ($opcion) {
+    case 'registro':
+        $user = new Usuario($_POST["nombre"], $_POST["clave"], $_POST["mail"]);
+        $user->GuardarEnJson();
+        break;
+}
 
 
 
