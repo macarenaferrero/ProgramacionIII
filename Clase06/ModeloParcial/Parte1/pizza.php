@@ -28,7 +28,7 @@ class Pizza
         if (
             get_class($obj) == "Pizza" &&
             $obj->sabor == $this->sabor &&
-            $obj->tipo = $this->tipo
+            $obj->tipo == $this->tipo
         ) {
             $retorno = true;
         }

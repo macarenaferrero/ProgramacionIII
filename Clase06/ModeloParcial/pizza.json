@@ -1,9 +1,9 @@
 [
     {
-        "id": 6,
+        "id": 12,
         "sabor": "napolitana",
         "precio": "250",
         "tipo": "piedra",
-        "cantidad": 22
+        "cantidad": 1
     }
 ]
