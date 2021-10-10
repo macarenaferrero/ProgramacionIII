@@ -10,6 +10,9 @@ switch ($metodo) {
             case 'Pedir':
                 include_once "Parte1/pizzaCarga.php";
                 break;
+            case 'Query':
+                include_once "Parte3/ConsultaVentas.php";
+                break;
         }
     break;
     case 'POST':
@@ -19,6 +22,9 @@ switch ($metodo) {
                 break;
             case 'Entregar':
                 include_once "Parte2/AltaVenta.php";
+                break;
+            case 'Cargar':
+                include_once "Parte4/pizzaCarga.php";
                 break;
         }
     break;

@@ -37,5 +37,36 @@ class Ventas
         return $objetoAccesoDato->RetornarUltimoIdInsertado();
     }
 
+    public static function TraerTodasLasVentas()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT SUM(cantidad) FROM ventas");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
+	}
     
+
+    public static function TraerVentasPorSaborYFechas()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE fecha BETWEEN '2021-10-1' AND '2021-10-30' ORDER BY sabor_pizza ASC");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
+	}
+
+    public static function TraerVentasPorUsuario()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE usuario='rober@gmail.com'");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
+	}
+
+    public static function TraerVentasPorSabor()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE sabor_pizza='jamon y morron'");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
+	}
 }
