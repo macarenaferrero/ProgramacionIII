@@ -10,17 +10,17 @@ $retorno = Ventas::TraerTodasLasVentas();
 var_dump($retorno);
 
 echo "El listado de ventas entre 2021-10-01 y 2021-10-30 ordenado por sabor es: ";
-$retorno = Ventas::TraerVentasPorSaborYFechas();
+$retorno = Ventas::TraerVentasPorSaborYFechas("2021-10-01","2021-10-30");
 "\n";
 var_dump($retorno);
 
 echo "El listado de ventas de el usuario 'rober@gmail.com' ingresado es : ";
-$retorno = Ventas::TraerVentasPorUsuario();
+$retorno = Ventas::TraerVentasPorUsuario('rober@gmail.com');
 "\n";
 var_dump($retorno);
 
 echo "El listado de ventas del sabor jamon y morron es : ";
-$retorno = Ventas::TraerVentasPorSabor();
+$retorno = Ventas::TraerVentasPorSabor("jamon y morron");
 "\n";
 var_dump($retorno);
 ?>

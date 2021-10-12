@@ -27,6 +27,12 @@ switch ($metodo) {
                 include_once "Parte4/pizzaCarga.php";
                 break;
         }
+    case 'PUT':
+        switch ($opcion) {
+            case 'Modificar':
+                include_once "Parte4/ModificarVenta.php";
+                break;
+            }
     break;
 }
 
