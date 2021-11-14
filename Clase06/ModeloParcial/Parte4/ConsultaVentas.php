@@ -3,7 +3,8 @@ require_once "Parte3/pizza.php";
 require_once "Parte3/Ventas.php";
 require_once "Parte3/AccesoDatos.php";
 
-
+if(isset($_POST['sabor_pizza']) && isset($_POST['usuario']) && isset($_POST['tipo_pizza']) && isset($_POST['cantidad']))
+  {
 echo "La cantidad de pizzas vendidas es: ";
 $retorno = Ventas::TraerTodasLasVentas();
 "\n";
@@ -23,4 +24,4 @@ echo "El listado de ventas del sabor jamon y morron es : ";
 $retorno = Ventas::TraerVentasPorSabor("jamon y morron");
 "\n";
 var_dump($retorno);
-?>
+  }

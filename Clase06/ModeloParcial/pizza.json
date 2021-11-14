@@ -1,51 +1,65 @@
 [
     {
-        "id": 64,
+        "id": 48,
         "sabor": "napolitana",
         "precio": "250",
         "tipo": "piedra",
         "cantidad": 6
     },
     {
-        "id": 72,
+        "id": 96,
         "sabor": "napo",
         "precio": "150",
         "tipo": "molde",
         "cantidad": "20"
     },
     {
-        "id": 58,
+        "id": 82,
         "sabor": "anchoas",
         "precio": "200",
         "tipo": "molde",
         "cantidad": 180
     },
     {
-        "id": 42,
+        "id": 4,
         "sabor": "roqueford",
         "precio": "300",
         "tipo": "piedra",
         "cantidad": 5
     },
     {
-        "id": 88,
+        "id": 35,
         "sabor": "rucula",
         "precio": "170",
         "tipo": "molde",
         "cantidad": 5
     },
     {
-        "id": 59,
+        "id": 80,
         "sabor": "pollo",
         "precio": "170",
         "tipo": "piedra",
         "cantidad": 4
     },
     {
-        "id": 72,
+        "id": 73,
         "sabor": "jamon y morron",
-        "precio": "150",
+        "precio": "250",
         "tipo": "piedra",
-        "cantidad": 1
+        "cantidad": 7
+    },
+    {
+        "id": 1,
+        "sabor": "jamon y morron",
+        "precio": "250",
+        "tipo": "piedra",
+        "cantidad": 24
+    },
+    {
+        "id": 58,
+        "sabor": "peperoni",
+        "precio": "300",
+        "tipo": "molde",
+        "cantidad": 5
     }
 ]

@@ -1,7 +1,7 @@
 <?php
 
 require_once "pizza.php";
-require_once "Ventas.php";
+require_once "Parte2/Ventas.php";
 
 
     $variable = json_decode(file_get_contents("php://input"),true);
@@ -16,3 +16,4 @@ require_once "Ventas.php";
     
         echo "Nro de pedido inexistente";    
     }
+    ?>

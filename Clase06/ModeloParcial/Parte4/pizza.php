@@ -101,7 +101,7 @@ class Pizza
     public function ActualizarLista($pizza, $solicitud): string
     {
         $retorno = " ";
-        $arrayPizzas = Pizza::LeerEnJson("../pizza.json");
+        $arrayPizzas = Pizza::LeerEnJson();
         if (!$pizza->VerificarPizza($arrayPizzas)) {
             if ($solicitud == "Agregar") {
                 array_push($arrayPizzas, $pizza);

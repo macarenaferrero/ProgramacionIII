@@ -1,7 +1,5 @@
 <?php
 
-use Pizza as GlobalPizza;
-
 class Pizza
 {
     public $id;
@@ -10,22 +8,21 @@ class Pizza
     public $tipo;
     public $cantidad;
 
-    public function __construct() {
-     
-    }
 
-    public static function CrearPizza($id = 0, $sabor, $precio, $tipo, $cantidad)
+    public function __construct($id = 0, $sabor, $precio, $tipo, $cantidad)
     {
-        $pizzaAux = new Pizza();
-        if ($pizzaAux->id != 0) {
-            $pizzaAux->id = $id;
+        if ($this->id != 0) {
+            $this->id = $id;
         } else {
-            $pizzaAux->id = rand(1, 100);
+            $this->id = rand(1, 100);
         }
-        $pizzaAux->sabor = $sabor;
-        $pizzaAux->precio = $precio;
-        $pizzaAux->tipo = $tipo;
-        $pizzaAux->cantidad = $cantidad;
+        $this->sabor = $sabor;
+        $this->precio = $precio;
+        $this->cantidad = $cantidad;
+        if($tipo == 'molde' || $tipo == 'piedra')
+        {
+            $this->tipo = $tipo;
+        }
     }
 
     public function Equals($obj): bool
@@ -73,7 +70,6 @@ class Pizza
         $success = false;
         $file = fopen($archivo, "w");
         if ($file) {
-            //$json = json_encode($arrayDePizzas);
             $json = json_encode($arrayDePizzas, JSON_PRETTY_PRINT);
             fwrite($file, $json);
             $success = true;
@@ -97,7 +93,7 @@ class Pizza
             }
         } else {
 
-            echo "El array esta vacio.";
+            echo "El array esta vacio. \n";
         }
         return $success;
     }
@@ -105,7 +101,7 @@ class Pizza
     public function ActualizarLista($pizza, $solicitud): string
     {
         $retorno = " ";
-        $arrayPizzas = Pizza::LeerEnJson("../pizza.json");
+        $arrayPizzas = Pizza::LeerEnJson();
         if (!$pizza->VerificarPizza($arrayPizzas)) {
             if ($solicitud == "Agregar") {
                 array_push($arrayPizzas, $pizza);
@@ -118,19 +114,31 @@ class Pizza
                         $pizzaEncontrada->cantidad += $pizza->cantidad;
                         $pizzaEncontrada->precio = $pizza->precio;
                         $retorno = "La lista fue actualizada.";
-                    }
-                } else if ($solicitud == "Entregar") {
-                    if ($pizzaEncontrada->cantidad >= $pizza->cantidad) {
-                        $pizzaEncontrada->cantidad -= $pizza->cantidad;
-                        $retorno = "La pizza fue vendida.";
-                    }
+                    }                
                 } else {
-                    $retorno = "La pizza no se encuentra en stock";
+                    $retorno = "La pizza no se encuentra en stock. \n";
                 }
             }
         }
-        Pizza::GuardarEnJson($arrayPizzas, "../pizza.json");
+        Pizza::GuardarEnJson($arrayPizzas);
         return $retorno;
+    }
+
+    public static function GuardarImagen($pizza)
+    {
+        $dir_subida = 'ImagenesDeLaVenta/';
+        if (!file_exists($dir_subida)) {
+            mkdir($dir_subida, 0777, true);
+        }
+        $extension = explode(".",$_FILES["archivo"]["name"])[1];
+        $nombreArchivo = $pizza->tipo ."-" .$pizza->sabor;
+        $destino = $dir_subida .$nombreArchivo ."." .$extension;
+        if(move_uploaded_file($_FILES["archivo"]["tmp_name"],$destino)){
+            echo "Imagen cargada correctamente";
+        }
+        else {
+            echo "Error al guardar la imagen. \n";
+      }
     }
 
     public static function BuscarPizza($arrayPizzas, $sabor, $tipo)
@@ -145,18 +153,21 @@ class Pizza
                 $hayTipo = true;
             }
         }
-        if ($haySabor && $hayTipo) {
-            echo "Si hay " . "\n";
-        } else if ($hayTipo) {
-            echo "Hay pizza del tipo " . $tipo . ", pero no del sabor " . $sabor . "\n";
-        } else if ($haySabor) {
-            echo "Hay pizza del sabor " . $sabor . ", pero no del tipo " . $tipo . "\n";
-        } else {
-            echo "No hay stock de la pizza solicitada" . "\n";
+        if($haySabor && $hayTipo)
+        {
+            echo "Si hay "."\n";
+        }
+        else if($hayTipo){
+           echo "Hay pizza del tipo " .$tipo .", pero no del sabor " .$sabor ."\n";
+           
+        }
+        else if($haySabor){
+           echo "Hay pizza del sabor " .$sabor .", pero no del tipo " .$tipo ."\n" ;
+        }
+        else {
+            echo "No hay stock de la pizza solicitada" ."\n";
         }
     }
-
-    //Metodos Parte II
 
     public function ActualizarListaII($pizza, $solicitud): bool
     {
@@ -179,4 +190,7 @@ class Pizza
         }
         return $retorno;
     }
+
 }
+
+?>

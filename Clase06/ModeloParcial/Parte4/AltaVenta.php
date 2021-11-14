@@ -29,7 +29,7 @@ require_once "Ventas.php";
         }
 
         //La extension viene despues del punto
-        $extension = explode(".",$_FILES["archivo"]["name"])[1];
+        $extension = "jpg";//explode(".",$_FILES["archivo"]["name"])[1];
 
         //Asigno el nombre con los parametrossolicitados
         $nombreArchivo = $ventaAux->tipo_pizza ."-" .$ventaAux->sabor_pizza."-" .explode("@", $ventaAux->usuario)[0]."-" .$ventaAux->fecha;

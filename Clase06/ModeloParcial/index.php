@@ -14,7 +14,7 @@ switch ($metodo) {
                 include_once "Parte3/ConsultaVentas.php";
                 break;
         }
-    break;
+        break;
     case 'POST':
         switch ($opcion) {
             case 'Consultar':
@@ -27,13 +27,11 @@ switch ($metodo) {
                 include_once "Parte4/pizzaCarga.php";
                 break;
         }
+        break;
     case 'PUT':
-        switch ($opcion) {
-            case 'Modificar':
-                include_once "Parte4/ModificarVenta.php";
-                break;
-            }
-    break;
+        include_once "Parte4/ModificarVenta.php";
+        break;
+    case 'DELETE':
+        include_once "Parte4/BorrarVenta.php";
+        break;
 }
-
-?>

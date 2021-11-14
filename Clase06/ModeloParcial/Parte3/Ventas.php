@@ -40,33 +40,59 @@ class Ventas
     public static function TraerTodasLasVentas()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT SUM(cantidad) FROM ventas");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT SUM(cantidad) AS Cantidad FROM ventas");
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
 	}
     
 
-    public static function TraerVentasPorSaborYFechas()
-	{
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE fecha BETWEEN '2021-10-1' AND '2021-10-30' ORDER BY sabor_pizza ASC");
-			$consulta->execute();			
-			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
-	}
+    public static function TraerVentasPorSaborYFechas($fechaUno, $fechaDos)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE fecha BETWEEN :fechaUno AND :fechaDos");
+        $consulta->bindValue(':fechaUno', $fechaUno, PDO::PARAM_STR);
+        $consulta->bindValue(':fechaDos', $fechaDos, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, "Ventas");
+    }
 
-    public static function TraerVentasPorUsuario()
-	{
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE usuario='rober@gmail.com'");
-			$consulta->execute();			
-			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
-	}
+    public static function TraerVentasPorUsuario($user)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE usuario=:usuario");
+        $consulta->bindValue(':usuario', $user, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-    public static function TraerVentasPorSabor()
-	{
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE sabor_pizza='jamon y morron'");
-			$consulta->execute();			
-			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
-	}
+    public static function TraerVentasPorSabor($sabor_pizza)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE sabor_pizza=:sabor_pizza");
+        $consulta->bindValue(':sabor_pizza', $sabor_pizza, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function ModificarVenta($numero_pedido, $usuario, $sabor_pizza, $tipo_pizza, $cantidad)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE Ventas SET usuario=:usuario, sabor_pizza=:sabor_pizza, tipo_pizza=:tipo_pizza, cantidad=:cantidad WHERE numero_pedido=:numero_pedido");
+        $consulta->bindValue(':numero_pedido', $numero_pedido, PDO::PARAM_STR);
+        $consulta->bindValue(':usuario', $usuario, PDO::PARAM_STR);
+        $consulta->bindValue(':sabor_pizza', $sabor_pizza, PDO::PARAM_STR);
+        $consulta->bindValue(':tipo_pizza', $tipo_pizza, PDO::PARAM_STR);
+        $consulta->bindValue(':cantidad', $cantidad, PDO::PARAM_INT);
+        $consulta->execute();
+        return $consulta->rowCount();
+    }
+
+    public static function EliminarVenta($numero_pedido)
+    {
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        $consulta = $objetoAccesoDato->RetornarConsulta("DELETE FROM Ventas WHERE numero_pedido=:numero_pedido");
+        $consulta->bindValue(':numero_pedido', $numero_pedido, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->rowCount();
+    }
 }

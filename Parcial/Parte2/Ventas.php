@@ -8,62 +8,42 @@ class Ventas
     public $numero_pedido;
     public $fecha;
     public $usuario;
-    public $sabor_pizza;
-    public $tipo_pizza;
+    public $sabor;
+    public $tipo;
     public $cantidad;
 
-    public function __construct()
-    {
+    public function __construct() {       
     }
 
-    public function CrearVenta($usuario, $sabor_pizza, $tipo_pizza, $cantidad)
-    {
+    public function CrearVenta($usuario, $sabor, $tipo, $cantidad)
+    {        
+        $this->numero_pedido = random_int(1,100);
         $this->usuario = $usuario;
-        $this->sabor_pizza = $sabor_pizza;
-        $this->tipo_pizza = $tipo_pizza;
+        $this->sabor = $sabor;
+        $this->tipo = $tipo;
         $this->cantidad = $cantidad;
         $this->fecha = date("Y-m-d");
-    }
-
-    public static function BorrarImagen($numero_pedido)
-    {
-        $dir_origen = 'ImagenesDeLaVenta/';
-        $dir_destino = 'BACKUPVENTAS/';
-        if (!file_exists($dir_destino)) {
-            mkdir($dir_destino, 0777, true);
-        }
-        $ventaAux = Ventas::BuscarVenta($numero_pedido)[0];
-        //var_dump($ventaAux);
-        $nombreArchivo = $ventaAux->tipo_pizza ."-" .$ventaAux->sabor_pizza."-" .explode("@", $ventaAux->usuario)[0]."-" .$ventaAux->fecha;
-        $origen = $dir_origen .$nombreArchivo ."." ."jpg";
-        $destino = $dir_destino .$nombreArchivo ."." ."jpg";
-        if(rename($origen, $destino))
-        {
-            echo "Archivo movido correctamente." ."</br>";
-        }
-        else
-        {
-            echo "Error al mover el archivo";
-        }
     }
 
     public function InsertarLaVenta()
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("INSERT into Ventas (fecha, usuario, sabor_pizza, tipo_pizza, cantidad) values(:fecha, :usuario, :sabor_pizza, :tipo_pizza, :cantidad)");
+        $consulta = $objetoAccesoDato->RetornarConsulta("INSERT into Ventas (numero_pedido, fecha, usuario, sabor, tipo, cantidad) values(:numero_pedido, :fecha, :usuario, :sabor, :tipo, :cantidad)");
+        $consulta->bindValue(':numero_pedido', $this->numero_pedido, PDO::PARAM_STR);
         $consulta->bindValue(':fecha', $this->fecha, PDO::PARAM_STR);
         $consulta->bindValue(':usuario', $this->usuario, PDO::PARAM_STR);
-        $consulta->bindValue(':sabor_pizza', $this->sabor_pizza, PDO::PARAM_STR);
-        $consulta->bindValue(':tipo_pizza', $this->tipo_pizza, PDO::PARAM_STR);
+        $consulta->bindValue(':sabor', $this->sabor, PDO::PARAM_STR);
+        $consulta->bindValue(':tipo', $this->tipo, PDO::PARAM_STR);
         $consulta->bindValue(':cantidad', $this->cantidad, PDO::PARAM_INT);
         $consulta->execute();
         return $objetoAccesoDato->RetornarUltimoIdInsertado();
     }
 
-    public static function TraerTodasLasVentas()
+    public static function TraerTodasLasVentasSegunFecha($fecha)
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT SUM(cantidad) AS Cantidad FROM ventas");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT SUM(cantidad) AS Cantidad FROM ventas WHERE fecha=:fecha");
+            $consulta->bindValue(':fecha', $fecha, PDO::PARAM_STR);
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_ASSOC);		
 	}
@@ -96,35 +76,26 @@ class Ventas
         $consulta->execute();
         return $consulta->fetchAll(PDO::FETCH_CLASS, "Ventas");
     }
-    public static function TraerVentasPorSabor($sabor_pizza)
+    public static function TraerVentasPorSabor($sabor)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE sabor_pizza=:sabor_pizza");
-        $consulta->bindValue(':sabor_pizza', $sabor_pizza, PDO::PARAM_STR);
+        $consulta = $objetoAccesoDato->RetornarConsulta("SELECT * FROM `ventas` WHERE sabor=:sabor");
+        $consulta->bindValue(':sabor', $sabor, PDO::PARAM_STR);
         $consulta->execute();
         return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ModificarVenta($numero_pedido, $usuario, $sabor_pizza, $tipo_pizza, $cantidad)
+    public static function ModificarVenta($numero_pedido, $usuario, $sabor, $tipo, $cantidad)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE Ventas SET usuario=:usuario, sabor_pizza=:sabor_pizza, tipo_pizza=:tipo_pizza, cantidad=:cantidad WHERE numero_pedido=:numero_pedido");
+        $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE Ventas SET usuario=:usuario, sabor=:sabor, tipo=:tipo, cantidad=:cantidad WHERE numero_pedido=:numero_pedido");
         $consulta->bindValue(':numero_pedido', $numero_pedido, PDO::PARAM_STR);
         $consulta->bindValue(':usuario', $usuario, PDO::PARAM_STR);
-        $consulta->bindValue(':sabor_pizza', $sabor_pizza, PDO::PARAM_STR);
-        $consulta->bindValue(':tipo_pizza', $tipo_pizza, PDO::PARAM_STR);
+        $consulta->bindValue(':sabor', $sabor, PDO::PARAM_STR);
+        $consulta->bindValue(':tipo', $tipo, PDO::PARAM_STR);
         $consulta->bindValue(':cantidad', $cantidad, PDO::PARAM_INT);
         $consulta->execute();
         return $consulta->rowCount();
     }
-
-    public static function EliminarVenta($numero_pedido)
-    {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("DELETE FROM Ventas WHERE numero_pedido=:numero_pedido");
-        $consulta->bindValue(':numero_pedido', $numero_pedido, PDO::PARAM_STR);
-        $consulta->execute();
-        return $consulta->rowCount();
-    }
-
+    
 }
