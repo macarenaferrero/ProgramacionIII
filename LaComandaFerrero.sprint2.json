@@ -1,0 +1,524 @@
+{
+	"info": {
+		"_postman_id": "29c8cd63-c264-4c68-9e5e-d4ae34599776",
+		"name": "LaComandaFerrero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"item": [
+						{
+							"name": "http://localhost:666/public/administracion/crearUsuario",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "CERVECERO",
+											"type": "text"
+										},
+										{
+											"key": "clave",
+											"value": "sirvoTuTrago",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/crearUsuario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"crearUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SuspenderUsuario",
+					"item": [
+						{
+							"name": "http://localhost:666/public/administracion/suspenderUsuario",
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "MOZO",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "clave",
+											"value": "todoLoCocino",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "idUsuario",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "fechaIngreso",
+											"value": "2021-11-07 16:04:18",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fechaBaja",
+											"value": "NULL",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/suspenderUsuario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"suspenderUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "EliminarUsuario",
+					"item": [
+						{
+							"name": "http://localhost:666/public/administracion/suspenderUsuario",
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "MOZO",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "clave",
+											"value": "todoLoCocino",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "idUsuario",
+											"value": "12",
+											"type": "text"
+										},
+										{
+											"key": "fechaIngreso",
+											"value": "2021-11-07 16:04:18",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fechaBaja",
+											"value": "NULL",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/borrarUsuario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"borrarUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "Listar Pedidos",
+					"item": [
+						{
+							"name": "http://localhost:666/public/administracion/pedidos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:666/public/administracion/pedidos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"pedidos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Crear Pedido",
+					"item": [
+						{
+							"name": "http://localhost:666/public/pedido/crear",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzY5NDYzMDgsImV4cCI6MTYzNzAwNjMwOCwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsidXN1YXJpbyI6eyJpZFVzdWFyaW8iOjIsInVzdWFyaW8iOiJNT1pPIiwiY2xhdmUiOiJ0b2RvTG9TaXJ2byIsImZlY2hhSW5ncmVzbyI6IjIwMjEtMTEtMDcgMTY6MDQ6MTgiLCJmZWNoYUJhamEiOm51bGx9LCJjbGF2ZSI6InRvZG9Mb1NpcnZvIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.7p3ke2NH8LAZBjhwMme6R_5neSvnfW8Lk5Kt9-k3Rek",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "nombre_cliente",
+											"value": "juan",
+											"type": "text"
+										},
+										{
+											"key": "idMesa",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "idUsuario",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "productosBebida",
+											"value": "coca-cola",
+											"type": "text"
+										},
+										{
+											"key": "productosComida",
+											"value": "ravioles",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/pedido/crear",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"pedido",
+										"crear"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Modificar Pedido",
+					"item": [
+						{
+							"name": "http://localhost:666/public/pedidos/modificarPedido",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idPedido\": 1,\r\n    \"fechaIngreso\": \"01:02:56\",\r\n    \"estado\": \"pendiente\",\r\n    \"nombre_cliente\": \"Silvia\",\r\n    \"idMesa\": 4,\r\n    \"idUsuario\": 5,\r\n    \"productosBebida\": \"Fanta\",\r\n    \"productosComida\": \"Flan\",\r\n    \"precio\": 267,\r\n    \"fotoMesa\": \"NULL\",\r\n    \"demoraPedido\": \"00:27:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:666/public/pedidos/modificarPedido",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"pedidos",
+										"modificarPedido"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cambiar Estado Pedido",
+					"item": [
+						{
+							"name": "http://localhost:666/public/pedido/modificarPedido",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzY5NDUzOTQsImV4cCI6MTYzNzAwNTM5NCwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsidXN1YXJpbyI6eyJpZFVzdWFyaW8iOjIsInVzdWFyaW8iOiJNT1pPIiwiY2xhdmUiOiJ0b2RvTG9TaXJ2byIsImZlY2hhSW5ncmVzbyI6IjIwMjEtMTEtMDcgMTY6MDQ6MTgiLCJmZWNoYUJhamEiOm51bGx9LCJjbGF2ZSI6InRvZG9Mb1NpcnZvIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.E0v9gtpwrBJ-vjvTJMN2g9Zqm7nv0_0xl5qwv_5MUh0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "MOZO",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "clave",
+											"value": "todoLoSirvo",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "idPedido",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "estado",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "demoraPedido",
+											"value": "00:30:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/pedido/modificarPedido",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"pedido",
+										"modificarPedido"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mesas",
+			"item": [
+				{
+					"name": "CerrarMesa",
+					"item": [
+						{
+							"name": "http://localhost:666/public/administracion/cerrarMesa",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "idMesa",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "idUsuario",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "estado",
+											"value": "Cerrada",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/cerrarMesa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"cerrarMesa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cambiar Estado",
+					"item": [
+						{
+							"name": "http://localhost:666/public/pedido/modificarPedido",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzY5NDUzOTQsImV4cCI6MTYzNzAwNTM5NCwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsidXN1YXJpbyI6eyJpZFVzdWFyaW8iOjIsInVzdWFyaW8iOiJNT1pPIiwiY2xhdmUiOiJ0b2RvTG9TaXJ2byIsImZlY2hhSW5ncmVzbyI6IjIwMjEtMTEtMDcgMTY6MDQ6MTgiLCJmZWNoYUJhamEiOm51bGx9LCJjbGF2ZSI6InRvZG9Mb1NpcnZvIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.E0v9gtpwrBJ-vjvTJMN2g9Zqm7nv0_0xl5qwv_5MUh0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "MOZO",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "clave",
+											"value": "todoLoSirvo",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "idMesa",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "estado",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "productosComida",
+											"value": "ravioles",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/pedido/cambiarEstadoMesa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"pedido",
+										"cambiarEstadoMesa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
