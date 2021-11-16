@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "6bf15e18-7a90-49a4-b89f-44a577345993",
+		"name": "SSP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "VerificarCredencial",
+			"item": [
+				{
+					"name": "http://localhost:666/public/verificarCredencial",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTM5MTUsImV4cCI6MTYzNzA3MzkxNSwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.qoYmDz46zvMFD1nSkPtMnaT3JJnFK19p0ufMkoMt5Zg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "mail",
+									"value": "maca@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/verificarCredencial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"verificarCredencial"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CrearCripto",
+			"item": [
+				{
+					"name": "http://localhost:666/public/cripto/crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTM5MTUsImV4cCI6MTYzNzA3MzkxNSwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.qoYmDz46zvMFD1nSkPtMnaT3JJnFK19p0ufMkoMt5Zg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/macar/Desktop/Domo/571218835_820.jpg"
+								},
+								{
+									"key": "nombre",
+									"value": "chin",
+									"type": "text"
+								},
+								{
+									"key": "nacionalidad",
+									"value": "china",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "0,50",
+									"type": "text"
+								},
+								{
+									"key": "clima",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "idProducto",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/cripto/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"cripto",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listar Cripto",
+			"item": [
+				{
+					"name": "http://localhost:666/public/listar/criptos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTM5MTUsImV4cCI6MTYzNzA3MzkxNSwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.qoYmDz46zvMFD1nSkPtMnaT3JJnFK19p0ufMkoMt5Zg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/macar/Desktop/Domo/571218835_820.jpg",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "bsas",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nacionalidad",
+									"value": "argentina",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "precio",
+									"value": "0,90",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "clima",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "idProducto",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/listar/criptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"listar",
+								"criptos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listar Cripto x Nacionalidad",
+			"item": [
+				{
+					"name": "http://localhost:666/public/listar/criptos/argentina",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/public/listar/criptos/argentina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"listar",
+								"criptos",
+								"argentina"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listar Cripto x ID",
+			"item": [
+				{
+					"name": "http://localhost:666/public/administracion/crearVenta",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTUyOTYsImV4cCI6MTYzNzA3NTI5NiwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.SRe5imReg4R_Jj9n4hHrwTvhqN9WyPWaBQSBEfFUD7U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "maca@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/listar/traerCripto/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"listar",
+								"traerCripto",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crear Venta",
+			"item": [
+				{
+					"name": "http://localhost:666/public/administracion/crearVenta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTUyOTYsImV4cCI6MTYzNzA3NTI5NiwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.SRe5imReg4R_Jj9n4hHrwTvhqN9WyPWaBQSBEfFUD7U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "maca@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "clave",
+									"value": "1234",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "cantidad",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "arg",
+									"type": "text"
+								},
+								{
+									"key": "idUsuario",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/macar/Desktop/Domo/conexionPipedII.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/administracion/crearVenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"administracion",
+								"crearVenta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ventas Alemanas entre fechas",
+			"item": [
+				{
+					"name": "http://localhost:666/public/cripto/ventas/alemana/2021-06-10/2021-06-13",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTUyOTYsImV4cCI6MTYzNzA3NTI5NiwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.SRe5imReg4R_Jj9n4hHrwTvhqN9WyPWaBQSBEfFUD7U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/cripto/ventas/alemana/2021-06-10/2021-06-13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"cripto",
+								"ventas",
+								"alemana",
+								"2021-06-10",
+								"2021-06-13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Buscar Venta x Nombre",
+			"item": [
+				{
+					"name": "http://localhost:666/public/cripto/buscarVenta/arg",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzcwMTUyOTYsImV4cCI6MTYzNzA3NTI5NiwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsibWFpbCI6Im1hY2FAZ21haWwuY29tIiwiY2xhdmUiOiIxMjM0IiwidGlwbyI6ImFkbWluIn0sImFwcCI6IkxhIENvbWFuZGEgRmVycmVybyJ9.SRe5imReg4R_Jj9n4hHrwTvhqN9WyPWaBQSBEfFUD7U",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/cripto/buscarVenta/arg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"cripto",
+								"buscarVenta",
+								"arg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
