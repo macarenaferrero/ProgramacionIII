@@ -70,7 +70,7 @@ $app->group('/mipedido', function (RouteCollectorProxy $group){
 
 
   $app->get('[/]', function (Request $request, Response $response) {    
-    $response->getBody()->write("<br>La Comanda Ferrero sin DB<br>");
+    $response->getBody()->write("<b>La Comanda Ferrero sin DB<b>");
     return $response;
 });
 
