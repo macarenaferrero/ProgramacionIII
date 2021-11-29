@@ -1,0 +1,1393 @@
+{
+	"info": {
+		"_postman_id": "29c8cd63-c264-4c68-9e5e-d4ae34599776",
+		"name": "LaComandaFerrero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"item": [
+						{
+							"name": "CrearUsuario",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "rpeña",
+											"type": "text"
+										},
+										{
+											"key": "clave",
+											"value": "todoLoVeo",
+											"type": "text"
+										},
+										{
+											"key": "tipoUsuario",
+											"value": "SOCIO",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/crearUsuario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"crearUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SuspenderUsuario",
+					"item": [
+						{
+							"name": "suspenderUsuario",
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "idPedido",
+											"value": "4",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "clave",
+											"value": "todoLoVeo",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "idUsuario",
+											"value": "22",
+											"type": "text"
+										},
+										{
+											"key": "fechaIngreso",
+											"value": "2021-11-07 16:04:18",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fechaBaja",
+											"value": "NULL",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/suspenderUsuario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"suspenderUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "EliminarUsuario",
+					"item": [
+						{
+							"name": "BorrarUsuario",
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "usuario",
+											"value": "MOZO",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "clave",
+											"value": "todoLoCocino",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "idUsuario",
+											"value": "45",
+											"type": "text"
+										},
+										{
+											"key": "fechaIngreso",
+											"value": "2021-11-07 16:04:18",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fechaBaja",
+											"value": "NULL",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:666/public/administracion/borrarUsuario",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"borrarUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BuscarUsuario",
+					"item": [
+						{
+							"name": "BuscarUsuarioxId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{jwt}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:666/public/administracion/buscar/44",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"public",
+										"administracion",
+										"buscar",
+										"44"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CircuitoPedido",
+			"item": [
+				{
+					"name": "crearMesa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idUsuario",
+									"value": "47",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "idMesa",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nombre_cliente",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearMesa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearMesa"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearPedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/macar/OneDrive/Imágenes/mesas/mesa2.jpg"
+								},
+								{
+									"key": "nombre_cliente",
+									"value": "Jose",
+									"type": "text"
+								},
+								{
+									"key": "idMesa",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "idUsuario",
+									"value": "21",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearPedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearPedido"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedirMilanesa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "demoraProducto",
+									"value": "00:25:00",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Una milanesa a caballo",
+									"type": "text"
+								},
+								{
+									"key": "idSector",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "340",
+									"type": "text"
+								},
+								{
+									"key": "orden",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearProducto"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pediHamburguesa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "demoraProducto",
+									"value": "00:15:00",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "hamburguesa de garbanzo",
+									"type": "text"
+								},
+								{
+									"key": "idSector",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "140",
+									"type": "text"
+								},
+								{
+									"key": "orden",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearProducto"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedir2daHamburguesa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "demoraProducto",
+									"value": "00:15:00",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "hamburguesa de garbanzo",
+									"type": "text"
+								},
+								{
+									"key": "idSector",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "140",
+									"type": "text"
+								},
+								{
+									"key": "orden",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearProducto"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedirCorona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "demoraProducto",
+									"value": "00:05:00",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Corona",
+									"type": "text"
+								},
+								{
+									"key": "idSector",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "300",
+									"type": "text"
+								},
+								{
+									"key": "orden",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearProducto"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pedirDaikiry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "demoraProducto",
+									"value": "00:10:00",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Daikiry",
+									"type": "text"
+								},
+								{
+									"key": "idSector",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "250",
+									"type": "text"
+								},
+								{
+									"key": "orden",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/crearProducto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"crearProducto"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cargarDemorayCostos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/agregarCostos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"agregarCostos"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "archivo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultarPedidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "au",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/pedido/buscar/cocina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"buscar",
+								"cocina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MilanesaListaParaServir",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/pedido/paraservir/31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"paraservir",
+								"31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HamburguesaListaParaServir",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/pedido/paraservir/34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"paraservir",
+								"34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2daHamburguesaListaParaServir",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/pedido/paraservir/33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"paraservir",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DaikiryListoParaServir",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/pedido/paraservir/37",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"paraservir",
+								"37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CoronaListaParaServir",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/public/pedido/paraservir/36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"paraservir",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ServirPedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "12",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/servir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"servir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagando",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPedido",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/cobrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"cobrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CerrarMesa",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idMesa",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "todoLoVeo",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/administracion/cerrarMesa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"administracion",
+								"cerrarMesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConsultarPendientesPorSector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idSector",
+									"value": "barraTragos",
+									"type": "text"
+								},
+								{
+									"key": "estado",
+									"value": "todoLoVeo",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/pendientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"pendientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "entregarEncuesta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "idPedido",
+									"value": "16",
+									"type": "text"
+								},
+								{
+									"key": "valoracionMozo",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "valoracionCocinero",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "valoracionRestaurant",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "valoracionMesa",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "comentarios",
+									"value": "Lindo lugar familiar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/mipedido/entregarEncuesta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"mipedido",
+								"entregarEncuesta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "promediarEncuesta",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idEncuesta",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/public/pedido/promediar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"public",
+								"pedido",
+								"promediar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consultar MiPedido - Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:666/public/mipedido/16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"public",
+						"mipedido",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearReporte",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tipoUsuario",
+							"value": "socio",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "todoLoVeo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:666/public/administracion/crearReporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"public",
+						"administracion",
+						"crearReporte"
+					],
+					"query": [
+						{
+							"key": "tipoUsuario",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "clave",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MejorEncuesta",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:666/public/administracion/estrellas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"public",
+						"administracion",
+						"estrellas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verificarCredencial",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzgyMDEyNzYsImV4cCI6MTYzODI2MTI3NiwiYXVkIjoiYjZmOWQ3M2JiZDkxMThjZTUwYmJmOGNmNTkzZTA5OTk5NDFlYjliMCIsImRhdGEiOnsidGlwb1VzdWFyaW8iOnsiaWRVc3VhcmlvIjoxLCJ0aXBvVXN1YXJpbyI6IlNPQ0lPIiwiY2xhdmUiOiJ0b2RvTG9WZW8iLCJmZWNoYUluZ3Jlc28iOiIyMDIxLTExLTA3IDE2OjA0OjE4IiwiZmVjaGFCYWphIjoiMDAwMC0wMC0wMCJ9LCJjbGF2ZSI6InRvZG9Mb1ZlbyJ9LCJhcHAiOiJMYSBDb21hbmRhIEZlcnJlcm8ifQ.11bGEJ_IeOXkmF7KUnrqTkTdzrP6fk8MjJ3af3XkiOk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tipoUsuario",
+							"value": "SOCIO",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "todoLoVeo",
+							"type": "text"
+						},
+						{
+							"key": "usuario",
+							"value": "rferrero",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:666/public/verificarCredencial",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"public",
+						"verificarCredencial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "descargaIngresosCSV",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:666/public/administracion/descargaIngresos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"public",
+						"administracion",
+						"descargaIngresos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cargaIngresosCSV",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{jwt}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:666/public/administracion/cargaIngresos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"public",
+						"administracion",
+						"cargaIngresos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
