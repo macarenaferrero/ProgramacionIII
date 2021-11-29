@@ -70,7 +70,7 @@ $app->group('/mipedido', function (RouteCollectorProxy $group){
 
 
   $app->get('[/]', function (Request $request, Response $response) {    
-    $response->getBody()->write("Pagina de Prueba");
+    $response->getBody()->write("La Comando Ferrero");
     return $response;
 });
 
